@@ -7,7 +7,9 @@ __pycache__/
 .env
 env/
 venv/
+venv
+env
 .venv
 
 # Pycharm
-.idea/
+.idea
