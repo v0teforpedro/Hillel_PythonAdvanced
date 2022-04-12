@@ -44,5 +44,3 @@ g1.add_student(a)
 g1.add_student(b)
 g1.add_student(c)
 print(g1.display_group())
-
-
