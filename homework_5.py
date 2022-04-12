@@ -1,47 +1,52 @@
 class Counter:
 
-    def __init__(self, min_value=0, max_value=100, current_value=0):
+    # best way to set default value to immutable arguments is via '='
+    def __init__(self, min_value=0, max_value=100, current_value=None):
+
         self.min = min_value
         self.max = max_value
         self.cur = current_value
 
-    def increase(self):
-        if self.min < 0 or self.max > 100 or self.cur == self.max:
-            return 'Out of range'
-        elif self.min > self.cur:
+        # check if current value available, otherwise set current as min.
+        if not self.cur:
             self.cur = self.min
+
+        # check correct input
+        if self.min > self.max:
+            raise ValueError('min_value cannot be more than max_value')
+
+        if self.cur < self.min:
+            raise ValueError('current_value cannot be less than min_value')
+
+    def increase(self):
+
+        # stop counter if max value is reached
+        if self.cur < self.max:
             self.cur += 1
-            return self.cur
-        else:
-            self.cur += 1
-            return self.cur
 
     def get_current_value(self):
         return self.cur
 
-print('Без параметров')
-counting = Counter()
-print(counting.get_current_value())
-print(counting.increase())
-print(counting.get_current_value())
-print(counting.increase())
-print(counting.increase())
-print(counting.increase())
 
-print('С параметрами')
-counting2 = Counter(97, 100, 94)
-print(counting2.get_current_value())
-print(counting2.increase())
-print(counting2.get_current_value())
-print(counting2.increase())
-print(counting2.increase())
-print(counting2.increase())
-
-print('Не все параметры')
-counting2 = Counter(97)
-print(counting2.get_current_value())
-print(counting2.increase())
-print(counting2.get_current_value())
-print(counting2.increase())
-print(counting2.increase())
-print(counting2.increase())
+test = Counter(-11, -8, -10)
+print(test.get_current_value())
+test.increase()
+test.increase()
+test.increase()
+print(test.get_current_value())
+print('-------------')
+test2 = Counter()
+print(test2.get_current_value())
+test2.increase()
+test2.increase()
+test2.increase()
+test2.increase()
+print(test2.get_current_value())
+print('-------------')
+test3 = Counter(1, 2)
+print(test3.get_current_value())
+test3.increase()
+test3.increase()
+test3.increase()
+test3.increase()
+print(test3.get_current_value())
