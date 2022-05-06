@@ -1,0 +1,22 @@
+{% extends 'layout.html' %}
+
+{% block title %}Rates{% endblock %}
+
+{% block content %}
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Code</th>
+          <th scope="col">Name</th>
+          <th scope="col">Rate</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>{{ quote['code'] }}</td>
+          <td>{{ quote['name'] }}</td>
+          <td>{{ quote['rate'] }}</td>
+        </tr>
+      </tbody>
+    </table>
+{% endblock %}
